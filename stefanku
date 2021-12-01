@@ -40,7 +40,6 @@ getgenv().Aiming = {
     ShowFOV = false,
     FOV = 60,
     FOVSides = 4,
-    ez = false
     FOVColour = Color3fromRGB(0, 0, 0),
 
     VisibleCheck = true,
@@ -72,7 +71,7 @@ local circle = Drawingnew("Circle")
 circle.Transparency = 0.5
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
-circle.Filled = Aiming.ez
+circle.Filled = true
 Aiming.FOVCircle = circle
 
 -- // Update
