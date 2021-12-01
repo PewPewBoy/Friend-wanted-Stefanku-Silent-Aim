@@ -50,8 +50,7 @@ getgenv().Aiming = {
     SelectedPart = nil,
 
     TargetPart = {"Head", "UpperTorso", "LowerTorso", "HumanoidRootPart"},
-    check = true,
-
+    
     Ignored = {
         Teams = {
             {
@@ -72,7 +71,7 @@ local circle = Drawingnew("Circle")
 circle.Transparency = 0.5
 circle.Thickness = 2
 circle.Color = Aiming.check
-circle.Filled = Aiming.fill
+circle.Filled = true
 Aiming.FOVCircle = circle
 
 -- // Update
