@@ -35,12 +35,12 @@ local tableinsert = table.insert
 
 -- // Silent Aim Vars
 getgenv().Aiming = {
-    Enabled = true,
+    Enabled = false,
 
     ShowFOV = false,
     FOV = 60,
-    FOVSides = 4,
-    FOVColour = Color3fromRGB(0, 0, 0),
+    FOVSides = 50,
+    FOVColour = Color3fromRGB(231, 84, 128),
 
     VisibleCheck = true,
     
@@ -50,7 +50,7 @@ getgenv().Aiming = {
     SelectedPart = nil,
 
     TargetPart = {"Head", "UpperTorso", "LowerTorso", "HumanoidRootPart"},
-    
+
     Ignored = {
         Teams = {
             {
@@ -62,7 +62,9 @@ getgenv().Aiming = {
             LocalPlayer,
             91318356
         }
-    }
+    },
+
+    RaycastIgnore = nil
 }
 local Aiming = getgenv().Aiming
 
@@ -70,7 +72,7 @@ local Aiming = getgenv().Aiming
 local circle = Drawingnew("Circle")
 circle.Transparency = 0.5
 circle.Thickness = 2
-circle.Color = Aiming.check
+circle.Color = Aiming.FOVColour
 circle.Filled = true
 Aiming.FOVCircle = circle
 
@@ -116,7 +118,7 @@ function Aiming.IsPartVisible(Part, PartDescendant)
         -- // Vars
         local raycastParams = RaycastParamsnew()
         raycastParams.FilterType = EnumRaycastFilterTypeBlacklist
-        raycastParams.FilterDescendantsInstances = {Character, CurrentCamera}
+        raycastParams.FilterDescendantsInstances = Aiming.RaycastIgnore or {Character, CurrentCamera}
 
         -- // Cast ray
         local Result = Raycast(Workspace, Origin, Part.Position - Origin, raycastParams)
@@ -434,5 +436,7 @@ Heartbeat:Connect(function()
     Aiming.GetClosestPlayerToCursor()
 end)
 
-
+-- //
 return Aiming
+
+-- // If you want the examples, look at the docs.
