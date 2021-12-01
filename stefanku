@@ -50,7 +50,7 @@ getgenv().Aiming = {
     SelectedPart = nil,
 
     TargetPart = {"Head", "HumanoidRootPart"},
-    fill = false
+    fill = false,
 
     Ignored = {
         Teams = {
